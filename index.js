@@ -14,6 +14,9 @@ module.exports = function (buf, cb) {
 
 		res = JSON.parse(res);
 		res = condenseKeys(res.data);
+		res.date = new Date(res.datetime * 1000);
+
+		delete res.datetime;
 
 		cb(null, res);
 	});
