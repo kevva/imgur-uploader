@@ -1,6 +1,6 @@
 {
   "name": "imgur-uploader",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Upload images to imgur",
   "license": "MIT",
   "repository": "kevva/imgur-uploader",
