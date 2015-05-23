@@ -1,4 +1,5 @@
 'use strict';
+var condenseKeys = require('condense-keys');
 var got = require('got');
 
 module.exports = function (buf, cb) {
@@ -11,6 +12,9 @@ module.exports = function (buf, cb) {
 			return;
 		}
 
-		cb(null, JSON.parse(res));
+		res = JSON.parse(res);
+		res = condenseKeys(res.data);
+
+		cb(null, res);
 	});
 };

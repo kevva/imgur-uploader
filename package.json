@@ -25,6 +25,7 @@
     "upload"
   ],
   "dependencies": {
+    "condense-keys": "^1.0.0",
     "got": "^3.2.0"
   },
   "devDependencies": {
