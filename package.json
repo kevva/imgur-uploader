@@ -1,0 +1,33 @@
+{
+  "name": "imgur-uploader",
+  "version": "1.0.0",
+  "description": "Upload images to imgur",
+  "license": "MIT",
+  "repository": "kevva/imgur-uploader",
+  "author": {
+    "name": "Kevin Martensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "github.com/kevva"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "api",
+    "buffer",
+    "imgur",
+    "upload"
+  ],
+  "dependencies": {
+    "got": "^3.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.0.4"
+  }
+}
