@@ -30,6 +30,7 @@
     "upload"
   ],
   "dependencies": {
+    "concat-stream": "^1.4.8",
     "condense-keys": "^1.0.0",
     "got": "^3.2.0",
     "meow": "^3.1.0"

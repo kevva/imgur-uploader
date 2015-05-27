@@ -1,4 +1,5 @@
 'use strict';
+var concatStream = require('concat-stream');
 var condenseKeys = require('condense-keys');
 var got = require('got');
 
@@ -23,27 +24,18 @@ module.exports = function (buf, cb) {
 };
 
 module.exports.stream = function () {
-	var len = 0;
-	var res = [];
+	var concat = concatStream(end);
 	var stream = got.post('https://api.imgur.com/3/image', {
 		headers: {authorization: 'Client-ID 34b90e75ab1c04b'}
 	});
 
-	stream.on('data', function (data) {
-		res.push(data);
-		len += data.length;
-	});
-
-	stream.on('end', function () {
-		res = Buffer.concat(res, len).toString();
-		res = JSON.parse(res);
-		res = condenseKeys(res.data);
+	function end(res) {
+		res = condenseKeys(JSON.parse(res).data);
 		res.date = new Date(res.datetime * 1000);
-
 		delete res.datetime;
-
 		stream.emit('upload', res);
-	});
+	}
 
+	stream.pipe(concat);
 	return stream;
-}
+};
