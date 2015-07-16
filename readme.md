@@ -2,6 +2,7 @@
 
 > Upload images to [imgur](http://imgur.com)
 
+*See [imgur-uploader-cli](https://github.com/kevva/imgur-uploader-cli) for the command-line version.*
 
 ## Install
 
@@ -50,21 +51,6 @@ stream.on('upload', function (res) {
 });
 
 fs.createReadStream('cat.jpg').pipe(stream);
-```
-
-
-## CLI
-
-```
-$ npm install --global imgur-uploader
-```
-
-```
-$ imgur-uploader --help
-
-  Example
-    $ imgur-uploader unicorn.png
-    $ cat unicorn.png | imgur-uploader
 ```
 
 

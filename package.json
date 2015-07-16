@@ -12,19 +12,14 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "bin": "cli.js",
   "scripts": {
     "test": "node test/test.js"
   },
   "files": [
-    "cli.js",
     "index.js"
   ],
   "keywords": [
     "api",
-    "app",
-    "cli",
-    "cli-app",
     "buffer",
     "imgur",
     "upload"
@@ -32,8 +27,7 @@
   "dependencies": {
     "concat-stream": "^1.4.8",
     "condense-keys": "^1.0.0",
-    "got": "^3.2.0",
-    "meow": "^3.3.0"
+    "got": "^3.2.0"
   },
   "devDependencies": {
     "ava": "^0.0.4"
