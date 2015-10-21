@@ -6,10 +6,9 @@ var imgurUploader = require('../');
 var buf = fs.readFileSync(path.join(__dirname, 'fixtures/test.png'));
 
 test(function (t) {
-	t.plan(4);
+	t.plan(3);
 
-	imgurUploader(buf, function (err, res) {
-		t.assert(!err, err);
+	imgurUploader(buf).then(function (res) {
 		t.assert(res, res);
 		t.assert(res.type === 'image/png', res.type);
 		t.assert(!res.title);

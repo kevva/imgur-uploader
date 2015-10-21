@@ -14,11 +14,11 @@ $ npm install --save imgur-uploader
 ## Usage
 
 ```js
-var fs = require('fs');
-var imgurUploader = require('imgur-uploader');
+const fs = require('fs');
+const imgurUploader = require('imgur-uploader');
 
-imgurUploader(fs.readFileSync('cat.jpg'), function (err, res) {
-	console.log(res);
+imgurUploader(fs.readFileSync('cat.jpg')).then(data => {
+	console.log(data);
 	/*
 	{
 		id: 'OB74hEa',
@@ -34,11 +34,11 @@ imgurUploader(fs.readFileSync('cat.jpg'), function (err, res) {
 You can also use the streaming interface like below:
 
 ```js
-var fs = require('fs');
-var stream = require('imgur-uploader').stream();
+const fs = require('fs');
+const stream = require('imgur-uploader').stream();
 
-stream.on('upload', function (res) {
-	console.log(res);
+stream.on('upload', data => {
+	console.log(data);
 	/*
 	{
 		id: 'OB74hEa',
