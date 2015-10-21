@@ -1,30 +1,25 @@
-'use strict';
-var fs = require('fs');
-var path = require('path');
-var test = require('ava');
-var imgurUploader = require('../');
-var buf = fs.readFileSync(path.join(__dirname, 'fixtures/test.png'));
+import fs from 'fs';
+import path from 'path';
+import rfpify from 'rfpify';
+import test from 'ava';
+import fn from '../';
 
-test(function (t) {
-	t.plan(3);
+const buf = fs.readFileSync(path.join(__dirname, 'fixtures/test.png'));
 
-	imgurUploader(buf).then(function (res) {
-		t.assert(res, res);
-		t.assert(res.type === 'image/png', res.type);
-		t.assert(!res.title);
-	});
+test(async t => {
+	const data = await fn(buf);
+
+	t.ok(data);
+	t.is(data.type, 'image/png');
+	t.notOk(data.title);
 });
 
-test(function (t) {
-	t.plan(3);
-
-	var stream = imgurUploader.stream();
-
-	stream.on('upload', function (res) {
-		t.assert(res, res);
-		t.assert(res.type === 'image/png', res.type);
-		t.assert(!res.title);
-	});
-
+test(async t => {
+	const stream = fn.stream();
 	stream.end(buf);
+	const data = await rfpify(stream.once.bind(stream))('upload');
+
+	t.ok(data);
+	t.is(data.type, 'image/png');
+	t.notOk(data.title);
 });
