@@ -2,7 +2,6 @@
 
 > Upload images to [imgur](http://imgur.com)
 
-*See [imgur-uploader-cli](https://github.com/kevva/imgur-uploader-cli) for the command-line version.*
 
 ## Install
 
@@ -52,6 +51,11 @@ stream.on('upload', data => {
 
 fs.createReadStream('cat.jpg').pipe(stream);
 ```
+
+
+## Related
+
+* [imgur-uploader-cli](https://github.com/kevva/imgur-uploader-cli) - CLI for this module
 
 
 ## License
