@@ -34,7 +34,7 @@ You can also use the streaming interface like below:
 
 ```js
 const fs = require('fs');
-const stream = require('imgur-uploader').stream();
+const stream = require('imgur-uploader');
 
 stream.on('upload', data => {
 	console.log(data);
@@ -49,7 +49,7 @@ stream.on('upload', data => {
 	*/
 });
 
-fs.createReadStream('cat.jpg').pipe(stream);
+fs.createReadStream('cat.jpg').pipe(imgurUploader.stream());
 ```
 
 

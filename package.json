@@ -10,7 +10,7 @@
     "url": "github.com/kevva"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava"
@@ -25,18 +25,17 @@
     "upload"
   ],
   "dependencies": {
-    "concat-stream": "^1.4.8",
-    "condense-keys": "^1.0.0",
-    "got": "^5.0.0"
+    "condense-keys": "^2.0.0",
+    "get-stream": "^2.2.0",
+    "got": "^6.3.0"
   },
   "devDependencies": {
     "ava": "*",
-    "rfpify": "^0.1.0",
+    "pify": "^2.3.0",
+    "rfpify": "^1.0.0",
     "xo": "*"
   },
   "xo": {
-    "ignores": [
-      "test/test.js"
-    ]
+    "esnext": true
   }
 }
