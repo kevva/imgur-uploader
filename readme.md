@@ -16,12 +16,13 @@ $ npm install --save imgur-uploader
 const fs = require('fs');
 const imgurUploader = require('imgur-uploader');
 
-imgurUploader(fs.readFileSync('cat.jpg')).then(data => {
+imgurUploader(fs.readFileSync('cat.jpg'), {title: 'Hello!'}).then(data => {
 	console.log(data);
 	/*
 	{
 		id: 'OB74hEa',
 		link: 'http://i.imgur.com/jbhDywa.jpg',
+		title: 'Hello!',
 		date: Sun May 24 2015 00:02:41 GMT+0200 (CEST),
 		type: 'image/jpg',
 		...
@@ -30,27 +31,20 @@ imgurUploader(fs.readFileSync('cat.jpg')).then(data => {
 });
 ```
 
-You can also use the streaming interface like below:
 
-```js
-const fs = require('fs');
-const stream = require('imgur-uploader');
+## API
 
-stream.on('upload', data => {
-	console.log(data);
-	/*
-	{
-		id: 'OB74hEa',
-		link: 'http://i.imgur.com/jbhDywa.jpg',
-		date: Sun May 24 2015 00:02:41 GMT+0200 (CEST),
-		type: 'image/jpg',
-		...
-	}
-	*/
-});
+### imgurUploader(input, [options])
 
-fs.createReadStream('cat.jpg').pipe(imgurUploader.stream());
-```
+#### input
+
+Type: `Buffer`
+
+Image `Buffer` to upload.
+
+#### options
+
+See the [imgur options](https://api.imgur.com/endpoints/image).
 
 
 ## Related

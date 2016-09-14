@@ -22,3 +22,10 @@ test('stream', async t => {
 	t.is(data.type, 'image/png');
 	t.falsy(data.title);
 });
+
+test('options', async t => {
+	const data = await m(await fsP.readFile(path.join(__dirname, 'fixture.png')), {title: 'foo'});
+
+	t.is(data.type, 'image/png');
+	t.is(data.title, 'foo');
+});
