@@ -40,7 +40,7 @@ imgurUploader(fs.readFileSync('cat.jpg'), {title: 'Hello!'}).then(data => {
 
 Type: `Buffer`
 
-Image `Buffer` to upload.
+Image to upload.
 
 #### options
 
