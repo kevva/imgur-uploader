@@ -12,7 +12,7 @@ module.exports = (buf, opts) => {
 	return got.post('https://api.imgur.com/3/image', {
 		json: true,
 		headers: {
-			'authorization': token,
+			authorization: token,
 			'content-type': 'application/json'
 		},
 		body: JSON.stringify(Object.assign({image: buf.toString('base64')}, opt))
