@@ -3,23 +3,32 @@ const condenseKeys = require('condense-keys');
 const getStream = require('get-stream');
 const got = require('got');
 
-module.exports = (buf, opts) => got.post('https://api.imgur.com/3/image', {
-	json: true,
-	headers: {
-		'authorization': 'Client-ID 34b90e75ab1c04b',
-		'content-type': 'application/json'
-	},
-	body: JSON.stringify(Object.assign({image: buf.toString('base64')}, opts))
-}).then(res => {
-	res = condenseKeys(res.body.data);
-	res.date = new Date(res.datetime * 1000);
-	delete res.datetime;
-	return res;
-});
+module.exports = (buf, opts) => {
+	const opt = Object.assign({token: 'Client-ID 34b90e75ab1c04b'}, opts);
+	const token = opt.token;
 
-module.exports.stream = () => {
+	delete opt.token;
+
+	return got.post('https://api.imgur.com/3/image', {
+		json: true,
+		headers: {
+			'authorization': token,
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify(Object.assign({image: buf.toString('base64')}, opt))
+	}).then(res => {
+		res = condenseKeys(res.body.data);
+		res.date = new Date(res.datetime * 1000);
+		delete res.datetime;
+		return res;
+	});
+};
+
+module.exports.stream = opts => {
+	opts = opts || {};
+
 	const stream = got.stream.post('https://api.imgur.com/3/image', {
-		headers: {authorization: 'Client-ID 34b90e75ab1c04b'}
+		headers: {authorization: opts.token || 'Client-ID 34b90e75ab1c04b'}
 	});
 
 	getStream.array(stream).then(res => {

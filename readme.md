@@ -44,7 +44,14 @@ Image to upload.
 
 #### options
 
-See the [imgur options](https://api.imgur.com/endpoints/image).
+See the [imgur options](https://api.imgur.com/endpoints/image) in addition to the ones below.
+
+#### token
+
+Type: `string`<br>
+Default: `Client-ID 34b90e75ab1c04b`
+
+Override the default authorization token (you probably want to).
 
 
 ## Related
