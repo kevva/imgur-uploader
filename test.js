@@ -1,9 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import pify from 'pify';
-import rfpify from 'rfpify';
 import test from 'ava';
-import m from './';
+import m from '.';
 
 const fsP = pify(fs);
 
@@ -17,7 +16,7 @@ test('buffer', async t => {
 test('stream', async t => {
 	const stream = m.stream();
 	stream.end(await fsP.readFile(path.join(__dirname, 'fixture.png')));
-	const {title, type} = await rfpify(stream.once.bind(stream))('upload');
+	const {title, type} = await pify(stream.once.bind(stream), {errorFirst: false})('upload');
 
 	t.is(type, 'image/png');
 	t.falsy(title);

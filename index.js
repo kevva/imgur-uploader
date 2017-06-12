@@ -15,7 +15,7 @@ module.exports = (buf, opts) => {
 			authorization: token,
 			'content-type': 'application/json'
 		},
-		body: JSON.stringify(Object.assign({image: buf.toString('base64')}, opt))
+		body: Object.assign({image: buf.toString('base64')}, opt)
 	}).then(res => {
 		res = condenseKeys(res.body.data);
 		res.date = new Date(res.datetime * 1000);

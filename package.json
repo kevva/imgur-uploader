@@ -26,13 +26,12 @@
   ],
   "dependencies": {
     "condense-keys": "^2.0.0",
-    "get-stream": "^2.2.0",
-    "got": "^6.3.0"
+    "get-stream": "^3.0.0",
+    "got": "^7.0.0"
   },
   "devDependencies": {
     "ava": "*",
-    "pify": "^2.3.0",
-    "rfpify": "^1.0.0",
+    "pify": "^3.0.0",
     "xo": "*"
   }
 }
